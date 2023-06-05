@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $PYFILE
+
+python main.py
