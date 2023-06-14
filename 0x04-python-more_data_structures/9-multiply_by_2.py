@@ -3,9 +3,9 @@
 def multiply_by_2(a_dictionary):
 
     new_dictionary = a_dictionary.copy()
-    new_keyes = list(new_dictionary.keyes())
+    new_keys = list(new_dictionary.keys())
 
-    for i in new_keyes:
+    for i in new_keys:
         new_dictionary[i] *= 2
 
     return new_dictionary
