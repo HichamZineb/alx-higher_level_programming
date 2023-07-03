@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
-"""empty class Rectangle that defines a rectangle"""
+"""class Rectangle that defines a rectangle"""
 
 
 class Rectangle:
     """Define Width and Height of rectangle"""
-    def __init__(self, width = 0, height = 0):
+    def __init__(self, width=0, height=0):
         if isinstance(width, int):
             if width < 0:
                 raise ValueError("width must be >= 0")
