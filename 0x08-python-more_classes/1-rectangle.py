@@ -20,7 +20,7 @@ class Rectangle:
         else:
             raise TypeError("height must be an integer")
 
-    @propertyi
+    @property
     def width(self):
         """private instance attribute width"""
         return self.__width
