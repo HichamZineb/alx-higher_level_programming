@@ -7,28 +7,28 @@ importing the function from the module
 ______________________________________
 	>>> add_integer = __import__('0.add_integer').add_integer
 	>>> add_integer(5, 2)
-	>>> 7
+	7
 	>>> add_integer(3, -1)
-	>>> 2
+	2
 
 Testing floats
 ______________
 	>>> add_integer(2.0, 3.0)
-	>>> 5
+	5
 
 Floats are casted to ints before addition
 _________________________________________
 	>>> add_integer(2.3, 5.6)
-	>>> 7
+	7
 	>>> add_integer(-1.2, -3.4)
-	>>> -4
+	-4
 
 Floats and ints are allowed
 ___________________________
 	>>> add_integer(4, 2.3)
-	>>> 6
+	6
 
 The second argument is 98 if not provided
 _________________________________________
 	>>> add_integer(2)
-	>>> 100
+	100
