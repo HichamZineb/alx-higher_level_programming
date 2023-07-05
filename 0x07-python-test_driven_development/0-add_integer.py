@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
 def add_integer(a, b=98):
-    """
-    Returns a + b
+    """Returns a + b
 
     Floats are casted into ints before addition
 
