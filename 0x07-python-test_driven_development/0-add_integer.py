@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""Adds two integers"""
-
-
 def add_integer(a, b=98):
     if type(a) not in [int, float] or a is None:
         raise TypeError("a must be an integer")
