@@ -8,7 +8,6 @@ def add_integer(a, b=98):
     Raises:
         TypeError: if a or b are not integers or floats
     """
-    
     if type(a) not in [int, float] or a is None:
         raise TypeError("a must be an integer")
     if type(b) not in [int, float] or b is None:
