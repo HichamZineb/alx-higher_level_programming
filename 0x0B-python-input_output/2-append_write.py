@@ -5,7 +5,7 @@ returns the number of characters added
 """
 
 
-def write_file(filename="", text=""):
+def append_write(filename="", text=""):
     """
     use the with statement
     don’t need to manage file permission exceptions.
