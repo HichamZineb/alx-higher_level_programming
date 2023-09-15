@@ -22,10 +22,9 @@ if __name__ == '__main__':
         (arv[4],)
     )
 
-    rows = cursor.fetchall()
+    cities = cursor.fetchall()
 
-    for row in rows:
-        print(row)
+    print(", ".join(city[0] for city in cities))
 
     cursor.close()
     db.close()
