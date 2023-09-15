@@ -19,14 +19,11 @@ if __name__ == '__main__':
         "INNER JOIN states ON cities.state_id = states.id "
         "WHERE states.name = %s "
         "ORDER BY cities.id ASC",
-        [arv[4]]
+        (argv[4],)
     )
 
     cities = cursor.fetchall()
-    i = []
-    for city in cities:
-        i.append(city[1])
-    print(", ".join(i))
+    print(", ".join(city[0] for city in cities))
 
     cursor.close()
     db.close()
