@@ -5,7 +5,7 @@ and uses the GitHub API to display your id.
 """
 
 import requests
-import sys
+from sys import argv
 
 if __name__ == "__main__":
 
