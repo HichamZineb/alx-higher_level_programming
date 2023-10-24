@@ -10,22 +10,28 @@ request(apiUrl, (error, response, body) => {
   } else {
     const movieData = JSON.parse(body);
     const charactersUrls = movieData.characters;
+    const characters = [];
 
-    function getIdFromUrl (url) {
-      const regex = /\/(\d+)\/$/;
-      const match = url.match(regex);
-      return match ? match[1] : null;
-    }
-
-    charactersUrls.sort((a, b) => getIdFromUrl(a) - getIdFromUrl(b));
-
+    // Fetch characters and their appearance order in the movie
     charactersUrls.forEach(characterUrl => {
       request(characterUrl, (charError, charResponse, charBody) => {
         if (charError) {
           console.error(charError);
         } else {
           const characterData = JSON.parse(charBody);
-          console.log(characterData.name);
+          characters.push({
+            name: characterData.name,
+            appearanceOrder: movieData.characters.indexOf(characterUrl)
+          });
+
+          // Check if all characters have been fetched
+          if (characters.length === charactersUrls.length) {
+            // Sort characters based on their appearance order
+            characters.sort((a, b) => a.appearanceOrder - b.appearanceOrder);
+            characters.forEach(character => {
+              console.log(character.name);
+            });
+          }
         }
       });
     });
