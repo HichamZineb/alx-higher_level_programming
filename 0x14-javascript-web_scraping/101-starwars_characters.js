@@ -10,7 +10,14 @@ request(apiUrl, (error, response, body) => {
   } else {
     const movieData = JSON.parse(body);
     const charactersUrls = movieData.characters;
-    let charactersCount = 0;
+
+    function getIdFromUrl (url) {
+      const regex = /\/(\d+)\/$/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    charactersUrls.sort((a, b) => getIdFromUrl(a) - getIdFromUrl(b));
 
     charactersUrls.forEach(characterUrl => {
       request(characterUrl, (charError, charResponse, charBody) => {
@@ -19,21 +26,6 @@ request(apiUrl, (error, response, body) => {
         } else {
           const characterData = JSON.parse(charBody);
           console.log(characterData.name);
-          charactersCount++;
-
-          if (charactersCount === charactersUrls.length) {
-            charactersUrls.sort((a, b) => a.localeCompare(b));
-            charactersUrls.forEach(sortedCharacterUrl => {
-              request(sortedCharacterUrl, (sortedCharError, sortedCharResponse, sortedCharBody) => {
-                if (sortedCharError) {
-                  console.error(sortedCharError);
-                } else {
-                  const sortedCharacterData = JSON.parse(sortedCharBody);
-                  console.log(sortedCharacterData.name);
-                }
-              });
-            });
-          }
         }
       });
     });
